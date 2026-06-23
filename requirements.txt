@@ -1,0 +1,15 @@
+# Librerías necesarias para reproducir el proyecto
+# Instalar con:  pip install -r requirements.txt
+
+pandas==3.0.3
+numpy==2.4.5
+scikit-learn==1.9.0
+matplotlib==3.10.9
+seaborn==0.13.2
+openpyxl==3.1.5
+joblib==1.5.3
+
+# Para correr las notebooks
+jupyter
+ipykernel
+nbconvert
