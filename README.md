@@ -1,18 +1,18 @@
 # TP2 - Predicción de Fumadores (Smoking) 🚬
 
 Trabajo Práctico 2 - Módulo 2. Proyecto de Machine Learning para predecir si una persona
-es fumadora (`smoking` = 1) o no (`smoking` = 0) a partir de datos de un chequeo médico.
+es fumadora  o no  a partir de datos de un chequeo médico.
 
-## 🎯 Objetivo
+# Objetivo
 
-Construir un modelo de clasificación que, a partir de 24 características médicas (edad, peso,
+Construir un modelo de clasificación que, a partir de varias características médicas (edad, peso,
 presión, colesterol, hemoglobina, etc.), prediga si una persona fuma. El modelo se entrena y
 valida con un conjunto etiquetado (50.000 personas) y luego se usa para predecir un conjunto
-sin etiquetar (5.692 personas).
+sin etiquetar.
 
 **Métrica de evaluación:** F1-Score de la clase 1 (fumadores).
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 TP2-smoking/
@@ -31,16 +31,6 @@ TP2-smoking/
 ├── requirements.txt
 └── README.md
 ```
-
-## ⚙️ Cómo reproducir
-
-1. Clonar el repositorio.
-2. Instalar las dependencias:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Ejecutar las notebooks **en orden** (de la 01 a la 06). Cada una se puede correr con
-   "Run All". Las notebooks 04, 05 y 06 dependen de los archivos generados por la 03.
 
 ## 🔬 Resumen de los experimentos
 
