@@ -28,6 +28,10 @@ TP2-smoking/
 │   ├── 04_entrenamiento_y_optimizacion.ipynb # Entrenamiento y comparación de modelos
 │   ├── 05_validacion.ipynb                 # Matriz de confusión e importancia de variables
 │   └── 06_prediccion.ipynb                 # Predicción final y exportación
+├── app.py              # App interactiva con Streamlit (versión local)
+├── vercel-app/         # App deployada en Vercel (web pública)
+│   ├── api/predict.py  # Función que sirve la página web y hace la predicción
+│   └── pyproject.toml  # Dependencias y entrypoint para Vercel
 ├── requirements.txt
 └── README.md
 ```
@@ -69,3 +73,34 @@ TP2-smoking/
   coinciden con lo observado en el análisis exploratorio, lo que da confianza en el modelo.
 - La predicción final sobre los 5.692 datos sin etiquetar se encuentra en
   `data/processed/smoking_prediction_entrega.csv`, en la columna `smoking_prediction`.
+
+## 🌐 App web interactiva (bonus)
+
+Además de las notebooks, el proyecto incluye una **aplicación web** donde se pueden
+cargar los datos de una persona y obtener la predicción del modelo en vivo.
+
+🔗 **App online:** https://tp-2-smoking.vercel.app/
+
+### ¿Cómo funciona?
+
+La app está formada por:
+- Una **página web** (HTML) con deslizadores para los datos de la persona y un botón de predecir.
+- Una **función Python** (`vercel-app/api/predict.py`) que sirve esa página y realiza la predicción.
+- Una **versión liviana** del Random Forest, **embebida** dentro de la función (no se reentrena nada).
+
+**Flujo paso a paso:**
+1. La persona entra a la URL → la función devuelve la página web (deslizadores + botón).
+2. La persona ajusta los valores (género, edad, altura, peso, hemoglobina, triglicéridos, Gtp) y
+   presiona **¿Es fumador?**.
+3. El navegador envía esos datos (en formato JSON) a la función Python.
+4. La función:
+   - Parte de los valores **medianos** de las 24 variables (las no ingresadas se completan con valores típicos).
+   - Reemplaza con los datos que cargó la persona y arma la fila en el orden correcto.
+   - Calcula la **probabilidad** de fumar con `predict_proba` y la compara con el **umbral 0,39**.
+5. Devuelve el resultado (probabilidad + fuma/no fuma), que se muestra en pantalla.
+
+### Tecnologías
+
+- **Vercel** (hosting gratuito, conectado a GitHub: cada `push` actualiza la app).
+- **Streamlit** (`app.py`): una versión alternativa de la app para correr localmente con
+  `streamlit run app.py`.
