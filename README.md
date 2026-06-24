@@ -59,6 +59,11 @@ TP2-smoking/
 
 - Un solo Árbol de Decisión sufría overfitting (F1 entrenamiento = 1,0 vs validación = 0,653).
 - El **Random Forest** (bagging, 200 árboles) fue el mejor modelo.
+- **Sobre el overfitting:** el Random Forest también memoriza el entrenamiento
+  (F1 entrenamiento = 1,0 vs validación = 0,75), algo habitual en este modelo porque sus
+  árboles crecen completos. Se priorizó el **F1 de validación** (~0,75, medido sobre datos
+  que el modelo nunca vio) como estimación honesta de la performance. Aun así, el Random
+  Forest generaliza mejor que un árbol solo (0,75 vs 0,65), gracias al promedio de muchos árboles.
 
 **4. Optimización del umbral**
 - En lugar del umbral por defecto (0,5), se buscó el óptimo para F1: **0,39**.
